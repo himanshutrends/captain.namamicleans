@@ -45,7 +45,7 @@ const generateMonthData = (year: number, month: number): AttendanceDay[] => {
 const statusConfig = {
   present: { icon: Check, className: 'bg-primary/20 text-primary' },
   absent: { icon: X, className: 'bg-destructive/20 text-destructive' },
-  'half-day': { icon: Clock, className: 'bg-accent text-accent-foreground' },
+  'half-day': { icon: Clock, className: 'bg-yellow-200 text-yellow-600' },
   future: { icon: null, className: 'bg-muted/30 text-muted-foreground' },
   weekend: { icon: null, className: 'bg-muted/50 text-muted-foreground/50' },
 };
@@ -138,7 +138,7 @@ export function AttendanceCalendar() {
           <span className="text-muted-foreground">Absent ({absentDays})</span>
         </div>
         <div className="flex items-center gap-1">
-          <div className="h-3 w-3 rounded bg-accent" />
+          <div className="h-3 w-3 rounded bg-yellow-200" />
           <span className="text-muted-foreground">Half ({halfDays})</span>
         </div>
       </div>

@@ -14,7 +14,7 @@ export function CheckInCard() {
 
   if (!isCheckedIn) {
     return (
-      <Card className="bg-gradient-to-br from-primary to-primary/80 border-0">
+      <Card className="bg-transparent border-none shadow-none">
         <CardContent className="p-5">
           <div className="flex items-center justify-between">
             <div>
@@ -27,8 +27,7 @@ export function CheckInCard() {
             </div>
             <Button 
               size="lg"
-              variant="secondary"
-              className="h-14 px-6"
+              className="h-14 px-6 bg-yellow-400 hover:bg-yellow-500 font-semibold"
               onClick={() => router.push('/check-in')}
             >
               <LogIn className="h-5 w-5 mr-2" />
@@ -41,18 +40,17 @@ export function CheckInCard() {
   }
 
   return (
-    <Card className="border-primary/20 bg-primary/5">
+    <Card className="bg-transparent border-none shadow-none">
       <CardContent className="p-4">
         <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2">
+          <div className="flex bg-white rounded px-2 items-center gap-2">
             <div className="h-3 w-3 bg-primary rounded-full animate-pulse" />
             <span className="font-semibold text-primary">{t('checkIn.youreActive')}</span>
           </div>
           <Button 
-            variant="outline" 
+            variant="destructive" 
             size="sm"
             onClick={() => router.push('/check-out')}
-            className="text-destructive border-destructive/30 hover:bg-destructive/10"
           >
             <LogOut className="h-4 w-4 mr-2" />
             {t('checkOut.title')}
@@ -60,11 +58,11 @@ export function CheckInCard() {
         </div>
         
         <div className="flex justify-between text-sm">
-          <div className="flex items-center gap-2 text-muted-foreground">
+          <div className="flex items-center gap-2 text-primary-foreground">
             <Clock className="h-4 w-4" />
             <span>{todayAttendance?.checkInTime}</span>
           </div>
-          <div className="flex items-center gap-2 text-muted-foreground">
+          <div className="flex items-center gap-2 text-primary-foreground">
             <MapPin className="h-4 w-4" />
             <span>{t('checkIn.onDuty')}</span>
           </div>

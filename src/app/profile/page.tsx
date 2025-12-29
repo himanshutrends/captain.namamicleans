@@ -99,8 +99,8 @@ export default function ProfilePage() {
 
   const menuItems = [
     { icon: FileText, label: t('profile.documents'), description: t('profile.documentsDesc'), onClick: () => router.push('/documents') },
-    { icon: Shield, label: t('profile.privacy'), description: t('profile.privacyDesc'), onClick: () => {} },
-    { icon: HelpCircle, label: t('profile.help'), description: t('profile.helpDesc'), onClick: () => {} },
+    { icon: Shield, label: t('profile.privacy'), description: t('profile.privacyDesc'), onClick: () => window.open('https://namamicleans.com/privacy-policy', '_blank') },
+    { icon: HelpCircle, label: t('profile.help'), description: t('profile.helpDesc'), onClick: () => window.open('https://wa.me/+918770490169', '_blank') },
   ];
 
   const getPermissionBadge = (status: 'granted' | 'denied' | 'prompt') => {
@@ -114,7 +114,7 @@ export default function ProfilePage() {
       {/* Header */}
       <header className="bg-gradient-to-br from-primary to-primary/80 pt-8 pb-16 px-4">
         <div className="max-w-lg mx-auto">
-          <h1 className="text-xl font-bold text-primary-foreground mb-6">{t('profile.title')}</h1>
+          {/* <h1 className="text-xl font-bold text-primary-foreground mb-6">{t('profile.title')}</h1> */}
           
           <div className="flex items-center gap-4">
             <div className="h-20 w-20 rounded-full bg-background/20 flex items-center justify-center">

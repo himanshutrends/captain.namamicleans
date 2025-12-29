@@ -34,7 +34,7 @@ const serviceIcons: Record<string, React.ElementType> = {
   default: Sparkles,
 };
 
-export function JobCard({ job, onNavigate, onStart, onView }: JobCardProps) {
+export function JobCard({ job, onNavigate, onStart }: JobCardProps) {
   const status = statusConfig[job.status];
   const payment = paymentConfig[job.paymentStatus];
   const IconComponent = serviceIcons[job.serviceType] || serviceIcons.default;
@@ -50,7 +50,6 @@ export function JobCard({ job, onNavigate, onStart, onView }: JobCardProps) {
         "overflow-hidden transition-all duration-200 hover:shadow-md active:scale-[0.99]",
         job.status === 'ongoing' && "ring-2 ring-primary/50"
       )}
-      onClick={onView}
     >
       <CardContent className="p-0">
         {/* Top Section - Service Info */}

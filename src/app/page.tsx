@@ -8,11 +8,19 @@ import { JobCard } from '@/components/captain/JobCard';
 import { useCaptain } from '@/context/CaptainContext';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
+import { CheckinAnimation } from '@/components/lottieanimations';
+import Image from 'next/image';
+import { Separator } from '@/components/ui/separator';
+import { BackgroundLines } from '@/components/ui/background-lines';
+import { BackgroundLinesDemo } from '@/components/headerwelcome';
+import { FlipWords } from '@/components/ui/flip-text';
 
 export default function HomePage() {
   const { captain, isCheckedIn, jobs } = useCaptain();
   const router = useRouter();
   const { t } = useTranslation();
+  const welcome = ["Welcome", "नमस्ते", "નમસ્તે", "నమస్కారం", "नमस्कार", "স্বাগতম", "ಸ್ವಾಗತ", "வணக்கம்", "ಹಲೋ"];
+
 
   const todaysJobs = jobs.filter(job => job.status !== 'completed').slice(0, 2);
   const completedToday = jobs.filter(job => job.status === 'completed').length;
@@ -29,30 +37,40 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background pb-20 ">
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-card border-b border-border">
+      <header className="bg-gradient-to-br from-primary via-primary to-primary/80 pt-safe pb-6 ">
         <div className="flex items-center justify-between p-4 max-w-lg mx-auto">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-              <User className="h-5 w-5 text-primary" />
+
+            <div className="h-10 w-10 rounded-xl bg-white flex items-center justify-center">
+              <Image src="/logo.png" alt="Logo" width={20} height={20} />
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">{t('auth.welcomeBack')}</p>
-              <h1 className="font-semibold text-foreground">{captain.name}</h1>
+              <h1 className="font-semibold text-background">Namami Cleans</h1>
+              <p className="text-sm text-background">Captain App</p>
             </div>
           </div>
-          <Button variant="ghost" size="icon" className="relative">
-            <Bell className="h-5 w-5" />
+          <Button variant="ghost" size="icon" className="relative bg-accent/20">
+            <Bell className="h-5 w-5 text-background" />
             <span className="absolute top-1 right-1 h-2 w-2 bg-destructive rounded-full" />
           </Button>
         </div>
+
+        <div className='px-4 pt-4'>
+          <p className="text-lg  text-background font-bold"><FlipWords words={welcome} className='text-white dark:text-black px-0' /> 👋</p>
+          <h1 className="font-semibold text-3xl text-background mb-8">{captain.name}!</h1>
+          <Separator className="my-2 opacity-30" />
+
+        </div>
+
+        {/* Check-in Card */}
+        <CheckInCard />
       </header>
 
       {/* Content */}
-      <main className="p-4 max-w-lg mx-auto space-y-4">
-        {/* Check-in Card */}
-        <CheckInCard />
+      <main className="flex-1 p-4 max-w-lg mx-auto space-y-4 -mt-6 rounded-t-3xl bg-background z-30">
+
 
         {/* Quick Stats */}
         {isCheckedIn && (
@@ -80,9 +98,9 @@ export default function HomePage() {
           <section>
             <div className="flex items-center justify-between mb-3">
               <h2 className="font-semibold text-foreground">{t('jobs.title')}</h2>
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 className="text-primary"
                 onClick={() => router.push('/jobs')}
               >
@@ -106,16 +124,16 @@ export default function HomePage() {
         {/* Not Checked In State */}
         {!isCheckedIn && (
           <div className="text-center py-12">
-            <div className="text-6xl mb-4">🧹</div>
+            <div className="text-6xl mb-4"><CheckinAnimation /></div>
             <h2 className="text-xl font-semibold text-foreground mb-2">
               {t('checkIn.startYourDay')}
             </h2>
             <p className="text-muted-foreground mb-6">
               {t('checkIn.checkInToView')}
             </p>
-            <Button size="lg" onClick={() => router.push('/check-in')}>
+            {/* <Button size="lg" onClick={() => router.push('/check-in')}>
               {t('checkIn.title')}
-            </Button>
+            </Button> */}
           </div>
         )}
       </main>

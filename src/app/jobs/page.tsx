@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { JobCard } from '@/components/captain/JobCard';
 import { useCaptain } from '@/context/CaptainContext';
 import { useRouter } from 'next/navigation';
+import { CheckinAnimation } from '@/components/lottieanimations';
 
 export default function JobsPage() {
   const { jobs, isCheckedIn } = useCaptain();
@@ -29,9 +30,7 @@ export default function JobsPage() {
     return (
       <div className="min-h-screen bg-background pb-20 flex items-center justify-center">
         <div className="text-center p-4">
-          <div className="h-16 w-16 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
-            <Lock className="h-8 w-8 text-muted-foreground" />
-          </div>
+          <CheckinAnimation />
           <h2 className="text-xl font-semibold text-foreground mb-2">Check In Required</h2>
           <p className="text-muted-foreground mb-4">
             You need to check in before viewing jobs

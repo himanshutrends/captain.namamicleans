@@ -106,7 +106,7 @@ export default function AnalyticsPage() {
               </CardContent>
             </Card>
 
-            {/* Performance Stats */}
+            {/* Performance Stats
             <div className="grid grid-cols-2 gap-3">
               <Card>
                 <CardContent className="p-4 flex flex-col items-center">
@@ -122,17 +122,17 @@ export default function AnalyticsPage() {
                   <p className="text-xs text-muted-foreground">Total Jobs</p>
                 </CardContent>
               </Card>
-            </div>
+            </div> */}
           </TabsContent>
 
           {/* Attendance Tab */}
           <TabsContent value="attendance" className="space-y-4 mt-4">
             <Card>
               <CardHeader className="pb-2">
-                <CardTitle className="text-base font-semibold flex items-center gap-2">
+                {/* <CardTitle className="text-base font-semibold flex items-center gap-2">
                   <Calendar className="h-5 w-5 text-primary" />
                   Attendance Calendar
-                </CardTitle>
+                </CardTitle> */}
               </CardHeader>
               <CardContent>
                 <AttendanceCalendar />

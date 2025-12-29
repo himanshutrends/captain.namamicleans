@@ -198,7 +198,7 @@ export default function CheckInPage() {
                   </label>
                   <Input
                     type="number"
-                    placeholder="e.g., 45678"
+                    placeholder="45678"
                     value={odometer}
                     onChange={(e) => setOdometer(e.target.value)}
                     className="text-lg h-14 text-center font-semibold"

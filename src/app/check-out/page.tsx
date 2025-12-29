@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { ArrowLeft, Fuel, MessageSquare, LogOut } from 'lucide-react';
+import { ArrowLeft, Fuel, MessageSquare, LogOut, Gauge, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
@@ -9,6 +9,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { useCaptain } from '@/context/CaptainContext';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
+import { Input } from '@/components/ui/input';
+
 
 export default function CheckOutPage() {
   const router = useRouter();
@@ -17,8 +20,12 @@ export default function CheckOutPage() {
   const [fuelLevel, setFuelLevel] = useState([30]);
   const [notes, setNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [odometer, setOdometer] = useState('');
 
   const completedJobs = jobs.filter(j => j.status === 'completed').length;
+
+  const { t } = useTranslation();
+
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
@@ -73,49 +80,46 @@ export default function CheckOutPage() {
 
         {/* Closing Fuel */}
         <Card>
-          <CardContent className="p-6 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center">
-                <Fuel className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground">Closing Fuel Level</h3>
-                <p className="text-sm text-muted-foreground">Enter your current fuel level</p>
-              </div>
-            </div>
-
-            <div className="space-y-4">
+            <CardContent className="p-6 space-y-6">
               <div className="text-center">
-                <span className="text-4xl font-bold text-primary">{fuelLevel[0]}%</span>
-              </div>
-              
-              <div className="px-2">
-                <Slider
-                  value={fuelLevel}
-                  onValueChange={setFuelLevel}
-                  max={100}
-                  step={5}
-                  className="w-full"
-                />
-                <div className="flex justify-between text-xs text-muted-foreground mt-2">
-                  <span>Empty</span>
-                  <span>Full</span>
+                <div className="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Gauge className="h-8 w-8 text-primary" />
                 </div>
+                <h2 className="text-lg font-semibold text-foreground mb-2">
+                  {t('checkIn.odometerReading')}
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  {t('checkIn.odometerDescription')}
+                </p>
               </div>
 
-              {/* Fuel usage indicator */}
-              {todayAttendance?.openingFuel && (
-                <div className="bg-accent/50 p-3 rounded-lg">
-                  <p className="text-sm text-muted-foreground">
-                    Fuel used today: <span className="font-semibold text-foreground">
-                      {Math.max(0, todayAttendance.openingFuel - fuelLevel[0])}%
-                    </span>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-foreground">
+                    Current Odometer Reading (km)
+                  </label>
+                  <Input
+                    type="number"
+                    placeholder="e.g., 45678"
+                    value={odometer}
+                    onChange={(e) => setOdometer(e.target.value)}
+                    className="text-lg h-14 text-center font-semibold"
+                  />
+                  <p className="text-xs text-muted-foreground text-center">
+                    Enter the exact reading shown on your vehicle&apos;s odometer
                   </p>
                 </div>
-              )}
-            </div>
-          </CardContent>
-        </Card>
+              </div>
+
+              <div className="flex items-center gap-2 p-3 bg-accent/50 rounded-lg">
+                <MapPin className="h-5 w-5 text-primary shrink-0" />
+                <div className="text-sm">
+                  <p className="font-medium text-foreground">{t('checkIn.locationCaptured')}</p>
+                  <p className="text-muted-foreground">{t('checkIn.gpsTagged')}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
         {/* Notes */}
         <Card>
