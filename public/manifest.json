@@ -4,8 +4,8 @@
   "description": "Captain dashboard for on-demand cleaning services",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#0ea5e9",
+  "background_color": "#10b981",
+  "theme_color": "#10b981",
   "orientation": "portrait",
   "scope": "/",
   "icons": [
@@ -58,7 +58,15 @@
       "purpose": "maskable any"
     }
   ],
+  "splash_pages": null,
   "categories": ["business", "productivity"],
-  "screenshots": [],
+  "screenshots": [
+    {
+      "src": "/splash-screen.png",
+      "sizes": "1170x2532",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
   "prefer_related_applications": false
 }

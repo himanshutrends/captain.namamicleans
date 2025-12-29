@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { 
   Smartphone, Shield, ChevronRight, ArrowLeft,
-  Bike
+  Bike,
+  Heart
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -270,10 +271,15 @@ export default function AuthPage() {
           </div> */}
 
           {/* Trust badge */}
-          <div className="sticky bottom-10 text-center">
+          <div className="fixed bottom-10 text-center w-full left-0 mx-auto">
             <p className="text-sm text-muted-foreground">
-              Trusted by <span className="font-semibold text-foreground">10,000+</span> captains
+              Trusted by <span className="font-semibold text-foreground">1,000+</span> customers
             </p>
+            <div className="flex items-center justify-center mt-2 gap-1 font-semibold">
+              Crafted with
+              <Heart className="h-5 w-5 fill-rose-600 text-rose-600 animate-pulse" />
+              in India
+            </div>
           </div>
         </div>
       </div>

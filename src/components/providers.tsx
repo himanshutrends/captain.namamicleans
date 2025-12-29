@@ -8,7 +8,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { BottomNav } from "@/components/captain/BottomNav";
 import "@/i18n";
-
 const queryClient = new QueryClient();
 
 export function Providers({ children }: { children: ReactNode }) {
