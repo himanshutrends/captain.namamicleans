@@ -11,9 +11,8 @@ import { useTranslation } from 'react-i18next';
 import { CheckinAnimation } from '@/components/lottieanimations';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
-import { BackgroundLines } from '@/components/ui/background-lines';
-import { BackgroundLinesDemo } from '@/components/headerwelcome';
 import { FlipWords } from '@/components/ui/flip-text';
+import { StarsBackground } from '@/components/ui/star-bg';
 
 export default function HomePage() {
   const { captain, isCheckedIn, jobs } = useCaptain();
@@ -37,9 +36,10 @@ export default function HomePage() {
   };
 
   return (
+    
     <div className="min-h-screen bg-background pb-20 ">
       {/* Header */}
-      <header className="bg-gradient-to-br from-primary via-primary to-primary/80 pt-safe pb-6 ">
+      <header className="bg-gradient-to-br from-primary via-primary to-primary/80 pt-safe pb-6">
         <div className="flex items-center justify-between p-4 max-w-lg mx-auto">
           <div className="flex items-center gap-3">
 
